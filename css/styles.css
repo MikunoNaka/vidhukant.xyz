@@ -15,15 +15,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-@import url("/fonts/source-code-pro/static/SourceCodePro-Medium.ttf");
 
 * {
   font-family: 'Source Code Pro', monospace;
 }
 
-::-moz-selection, ::selection {
+/* they need to be seperate else they wont work on chromium */
+::selection {
   color: #ffffff;
-  /*background: #441d61;*/
+  background: #8215d2;
+}
+::-moz-selection {
+  color: #ffffff;
   background: #8215d2;
 }
 

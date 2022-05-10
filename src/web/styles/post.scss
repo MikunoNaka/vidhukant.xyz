@@ -25,6 +25,7 @@
 
 article {
   background-color: $postDefBackgroundColor;
+  min-width: 1150px;
   width: 60%;
   max-width: 1920px;
   margin: 3em auto;
@@ -44,12 +45,18 @@ article {
 
     .post-info {
       width: 100%;
-      border: 1px solid pink;
     }
   }
 
 
   .post-content {
+    h1 { color: $fg1; }
+    h2 { color: $fg2; }
+    h3 { color: $fg3; }
+    h4 { color: $fg4; }
+    h5 { color: $fg5; }
+    h6 { color: $fg6; }
+
     .code-block {
       color: $codeBlockForegroundColor;
       padding: 0.2em 1em;
@@ -72,8 +79,46 @@ article {
 // 
 // }
 
-
-
 .centered {
   text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  article {
+    margin: 2em auto;
+    min-width: 780px;
+    width: 90%;
+
+    .post-header { .post-title { font-size: 2.2em; } }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  article {
+    $side-margin: 1em;
+    min-width: 560px;
+    width: auto;
+    margin: calc($side-margin * 1.5) $side-margin;
+    .header-seperator { margin: 1em (-$side-margin); }
+    .post-header { .post-title { font-size: 2em; } } 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  article {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    border: none;
+    padding: 1em;
+    .header-seperator {
+      margin: 1em -1em;
+    }
+    .post-header {
+      .post-title { font-size: 1.5em; }
+      // NOTE: might need to be modified i.e
+      // content goes to next line instead of overflowing
+      .post-info { width: 100%; }
+    }
+  }
 }

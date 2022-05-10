@@ -37,5 +37,5 @@ body {
   color: $defForegroundColor;
 }
 
-@include selectionColors(#FFFFFF, #8215D2)
+@include selectionColors(#8215D2, #FFFFFF)
 

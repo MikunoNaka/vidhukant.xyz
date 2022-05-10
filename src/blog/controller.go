@@ -25,19 +25,22 @@ import (
 type Post struct {
   ID        int
   CreatedAt string
+  UpdatedAt string
   Title     string
   Content   string
 }
 
 func (db *dbhandler) getPost(id int) Post {
-  rows, err := db.connection.Prepare("SELECT ID, CreatedAt, Title, Content FROM Posts WHERE ID = ?")
+  rows, err := db.connection.Prepare(
+    `SELECT ID, DATE_FORMAT(CreatedAt, "%D %M %Y"), DATE_FORMAT(UpdatedAt, "%D %M %Y"), Title, Content FROM Posts WHERE ID = ?`,
+  )
 	if err != nil {
 		panic(err.Error())
 	}
 	defer rows.Close()
 
   var post Post
-  if err := rows.QueryRow(id).Scan(&post.ID, &post.CreatedAt, &post.Title, &post.Content); err != nil {
+  if err := rows.QueryRow(id).Scan(&post.ID, &post.CreatedAt, &post.UpdatedAt, &post.Title, &post.Content); err != nil {
     // TODO: handle error when rows are empty
     post.Content = "404"
   }

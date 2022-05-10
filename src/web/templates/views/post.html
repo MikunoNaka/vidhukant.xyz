@@ -37,7 +37,10 @@
         {{ .post_title }}
       </h1>
       <div class="post-info" id="info">
-        <span class="post-createdat" id="created-at">Created At: {{ .post_createdat }}</span>
+        <span class="post-createdat" id="created-at">Created: {{ .post_createdat }}</span>
+        {{ if .post_updatedat }}
+          <span class="post-createdat" id="created-at">Last Updated: {{ .post_updatedat }} </span>
+        {{- end }}
       </div>
     </div>
     <hr class="header-seperator">

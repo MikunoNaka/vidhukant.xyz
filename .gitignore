@@ -1,2 +1,3 @@
-fonts
-pictures
+www/fonts
+www/pictures
+src/.env

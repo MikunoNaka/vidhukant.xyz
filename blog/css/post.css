@@ -1,0 +1,112 @@
+/*
+ * vidhukant.xyz: Vidhu Kant's Personal Website
+ * Copyright (C) 2022  Vidhu Kant Sharma <vidhukant@protonmail.ch>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+/*
+ * vidhukant.xyz: Vidhu Kant's Personal Website
+ * Copyright (C) 2022  Vidhu Kant Sharma <vidhukant@protonmail.ch>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+/*
+ * vidhukant.xyz: Vidhu Kant's Personal Website
+ * Copyright (C) 2022  Vidhu Kant Sharma <vidhukant@protonmail.ch>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+/*
+ * vidhukant.xyz: Vidhu Kant's Personal Website
+ * Copyright (C) 2022  Vidhu Kant Sharma <vidhukant@protonmail.ch>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+article {
+  background-color: #1a2a30;
+  width: 60%;
+  max-width: 1920px;
+  margin: 3em auto;
+  padding: 1em 2em;
+  border: 1px dotted #dfdfdf;
+}
+article .header-seperator {
+  margin: 1em -2em;
+}
+article .post-header .post-title {
+  font-size: 2.5em;
+  text-align: center;
+  color: #dd237d;
+}
+article .post-header .post-info {
+  width: 100%;
+  border: 1px solid pink;
+}
+article .post-content .code-block {
+  color: #dfdfdf;
+  padding: 0.2em 1em;
+  background-color: #384044;
+  border-radius: 0.4em;
+}
+article .post-content .code-block ::selection {
+  color: #1a2a30;
+  background-color: pink;
+}
+article .post-content .code-block ::-moz-selection {
+  color: #1a2a30;
+  background-color: pink;
+}
+article .post-content .code-block em {
+  all: unset;
+  color: gray;
+}
+
+.centered {
+  text-align: center;
+}
+
+/*# sourceMappingURL=post.css.map */

@@ -1,0 +1,79 @@
+/*
+ * vidhukant.xyz: Vidhu Kant's Personal Website
+ * Copyright (C) 2022  Vidhu Kant Sharma <vidhukant@protonmail.ch>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+@import "theme/global";
+@import "theme/post";
+
+// header {
+// 
+// }
+
+article {
+  background-color: $postDefBackgroundColor;
+  width: 60%;
+  max-width: 1920px;
+  margin: 3em auto;
+  padding: 1em 2em;
+  border: 1px dotted $articleBorderColor;
+  
+  .header-seperator {
+    margin: 1em -2em;
+  }
+
+  .post-header {
+    .post-title {
+      font-size: 2.5em;
+      text-align: center;
+      color: $postTitleColor;
+    }
+
+    .post-info {
+      width: 100%;
+      border: 1px solid pink;
+    }
+  }
+
+
+  .post-content {
+    .code-block {
+      color: $codeBlockForegroundColor;
+      padding: 0.2em 1em;
+      background-color: $codeBlockBackgroundColor;
+      border-radius: 0.4em;
+      @include selectionColors (
+        $codeBlockHighlightBackground,
+        $codeBlockHighlightForeground
+      );
+
+      em {
+        all: unset;
+        color: $codeCommentForegroundColor;
+      }
+    }
+  }
+}
+
+// footer {
+// 
+// }
+
+
+
+.centered {
+  text-align: center;
+}

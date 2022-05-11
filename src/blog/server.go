@@ -27,11 +27,13 @@ func Routes(r *gin.Engine) {
   r.LoadHTMLGlob("web/templates/**/*")
 
   // blog.vidhukant.xyz uses /blog as root
-  blog := r.Group("/blog") 
+  blog := r.Group("/") 
+
+  posts := blog.Group("/posts")
 
   // fetch index page
-  blog.GET("/posts", getPosts)
+  posts.GET("/", getPosts)
 
   // fetch a post
-  blog.GET("/posts/:id", getPost)
+  posts.GET("/:id", getPost)
 }

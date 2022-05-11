@@ -34,19 +34,19 @@
   <article>
     <div class="post-header" id="header">
       <h1 class="post-title" id="title">
-        {{ .post_title }}
+        {{ .Title }}
       </h1>
       <div class="post-info" id="info">
-        <span class="post-createdat" id="created-at">Created: {{ .post_createdat }}</span>
-        {{ if .post_updatedat }}
-          <span class="post-createdat" id="created-at">Last Updated: {{ .post_updatedat }} </span>
+        <span class="post-createdat" id="created-at">Created: {{ .CreatedAt }}</span>
+        {{ if .UpdatedAt }}
+          <span class="post-createdat" id="created-at">Last Updated: {{ .UpdatedAt }} </span>
         {{- end }}
       </div>
     </div>
     <hr class="header-seperator">
 
     <div class="post-content" id="content">
-      {{ .post_content }}
+      {{ .Content }}
     </div>
 
     <div class="post-footer" id="footer">

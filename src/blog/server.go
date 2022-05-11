@@ -19,11 +19,6 @@
 package blog
 
 import (
-	"html/template"
-	"net/http"
-	"strconv"
-
-	"github.com/MikunoNaka/vidhukant.xyz/db"
 	"github.com/gin-gonic/gin"
 )
 
@@ -31,21 +26,12 @@ func Routes(r *gin.Engine) {
   // load html templates
   r.LoadHTMLGlob("web/templates/**/*")
 
-  // initialize database
-  connection := db.ConnectDB()
-  db := newHandler(connection)
-
   // blog.vidhukant.xyz uses /blog as root
   blog := r.Group("/blog") 
 
-  blog.GET("/posts/:id", func (ctx *gin.Context) {
-    id, _ := strconv.Atoi(ctx.Param("id"))
-    post := db.getPost(id)
+  // fetch index page
+  blog.GET("/posts", getPosts)
 
-    ctx.HTML(http.StatusOK, "views/post.html", gin.H {
-      "post_title": post.Title,
-      "post_createdat": post.CreatedAt,
-      "post_content": template.HTML(post.Content),
-    })
-  })
+  // fetch a post
+  blog.GET("/posts/:id", getPost)
 }

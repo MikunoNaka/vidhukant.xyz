@@ -16,23 +16,27 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
 
-{{ define "views/index.html" }}
+{{ define "views/posts.html" }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Vidhu Kant Sharma's personal blog index" />
+  <meta name="description" content="BLOG DESCRIPTION GHERE" />
   <link type="text/css" rel="stylesheet" href="/css/styles.css">
+  <link type="text/css" rel="stylesheet" href="/css/post.css">
   <title>
-    VidhuKant's Blog
+    BLOG TITLE HERE
   </title>
 </head>
 <body>
-</body>
   {{ template "partials/navbar.html" .}}
-  <br/> <br/> <br/> <br/>
-  <br/> <br/> <br/> <br/>
-  {{ .name }}
+  <article>
+    {{range .Posts}}
+      <div class="post">
+      </div>
+    {{end}}
+  </article>
+</body>
 </html>
 {{ end }}

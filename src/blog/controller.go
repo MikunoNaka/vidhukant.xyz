@@ -25,9 +25,31 @@ import (
 type Post struct {
   ID        int
   CreatedAt string
-  UpdatedAt string
+  UpdatedAt *string
   Title     string
   Content   string
+}
+
+func (db *dbhandler) getPosts() []Post {
+  rows, err := db.connection.Query(
+    `SELECT ID, DATE_FORMAT(CreatedAt, "%D %M %Y"), DATE_FORMAT(UpdatedAt, "%D %M %Y"), Title, Content FROM Posts`,
+  ) 
+  if err != nil {
+		panic(err.Error())
+	}
+	defer rows.Close()
+
+  var posts []Post
+  for rows.Next() {
+    var p Post
+    err := rows.Scan(&p.ID, &p.CreatedAt, &p.UpdatedAt, &p.Title, &p.Content)
+    if err != nil {
+      panic(err)
+    }
+    posts = append(posts, p)
+  }
+
+  return posts
 }
 
 func (db *dbhandler) getPost(id int) Post {
@@ -43,6 +65,7 @@ func (db *dbhandler) getPost(id int) Post {
   if err := rows.QueryRow(id).Scan(&post.ID, &post.CreatedAt, &post.UpdatedAt, &post.Title, &post.Content); err != nil {
     // TODO: handle error when rows are empty
     post.Content = "404"
+    // panic(err)
   }
 
   return post

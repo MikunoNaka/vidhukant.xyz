@@ -16,27 +16,40 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-// global color definitions
-// background
-$defBackgroundColor: #061820;
-$altBackgroundColor: #1a2a30;
-$selectionBackground: #8215D2;
+package blog
 
-// foreground
-$defForegroundColor: #dfdfdf;
-$altForegroundColor: #dfdfdf;
-$selectionForeground: #FFFFFF;
+import (
+	"html/template"
+	"net/http"
+	"strconv"
 
+	"github.com/MikunoNaka/vidhukant.xyz/db"
+	"github.com/gin-gonic/gin"
+)
 
+// database connection
+var base *dbhandler
+func init() {
+  connection := db.ConnectDB()
+  base = newHandler(connection)
+}
 
-// apply text selection/highlight colors easily
-@mixin selectionColors($background, $foreground) {
-  ::selection { 
-    color: $foreground;
-    background-color: $background;
-  }
-  ::-moz-selection { 
-    color: $foreground;
-    background-color: $background;
-  }
+func getPosts(ctx *gin.Context) {
+  posts := base.getPosts();
+
+  ctx.HTML(http.StatusOK, "views/posts.html", gin.H {
+    "Posts": posts,
+  })
+}
+
+func getPost(ctx *gin.Context) {
+  id, _ := strconv.Atoi(ctx.Param("id"))
+  post := base.getPost(id)
+
+  ctx.HTML(http.StatusOK, "views/post.html", gin.H {
+    "Title": post.Title,
+    "CreatedAt": post.CreatedAt,
+    "UpdatedAt": post.UpdatedAt,
+    "Content": template.HTML(post.Content),
+  })
 }

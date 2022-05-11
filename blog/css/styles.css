@@ -87,22 +87,31 @@
 #navbar {
   height: 3rem;
   width: 100%;
-  background-color: violet;
+  background-color: #232627;
   position: sticky;
   top: 0;
-  margin: 0;
+  box-shadow: 0 0.5em 1em #232627;
 }
 #navbar ul {
   list-style-type: none;
   height: 100%;
-  margin: 0;
+  min-width: 400px;
+  max-width: 500px;
+  margin: 0 auto;
   padding: 0;
   display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 #navbar ul li {
   padding: 0;
   margin: 0 0.5em;
+}
+#navbar ul a {
+  font-size: 1.3em;
+  font-weight: 500;
+  text-decoration: none;
+  color: #bbf2c0;
 }
 
 * {

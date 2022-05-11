@@ -17,7 +17,10 @@
  */
 
 // color definitions
-$navbarBackgroundColor: violet;
+$navbarBackgroundColor: #232627;
+$navbarForegroundColor: #bbf2c0;
+
+$navbarShadow: 0 0.5em 1em $navbarBackgroundColor;
 
 // size definitions
 $navbarHeight: 3rem;

@@ -33,17 +33,22 @@ $codeBlockForegroundColor: $postAltForegroundColor;
 $codeCommentForegroundColor: gray;
 $codeBlockHighlightForeground: $altBackgroundColor;
 
-$fg1: #A600FF;
-$fg2: #23DEBA;
+// $fg1: #d305e8;
+$fg1: #FFFFFF;
+$fg2: #28c7d4;
 $fg3: #F26413;
-$fg4: #B623DE;
-$fg5: #B623DE;
+$fg4: #23DEBA;
+$fg5: #A600FF;
 $fg6: #B623DE;
+
+$listItemForeground: $fg3;
 
 // other
 $articleBorderColor: $defForegroundColor;
 
 // $postTitleColor: #2aa386;
-$postTitleColor: #dd237d;
+// $postTitleColor: #dd237d;
+// $postTitleColor: #ffbb00;
+$postTitleColor: #dea2c2;
 
 // size definitions

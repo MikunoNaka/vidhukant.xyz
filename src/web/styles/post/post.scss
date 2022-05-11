@@ -16,9 +16,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import "theme/global";
-@import "theme/post";
-@import "partials/article";
+@import "../theme/global";
+@import "../theme/post";
+@import "../partials/article";
 
 // header {
 // 
@@ -28,8 +28,8 @@ article {
   @include article-styling;
   .post-header {
     .post-title {
-      font-size: 2.5em;
-      text-align: center;
+      font-size: $postTitleFontSize;
+      text-align: $postTitleAlignment;
       color: $postTitleColor;
     }
     .post-info {
@@ -94,9 +94,9 @@ article {
 
     .code-block {
       color: $codeBlockForegroundColor;
-      padding: 0.2em 1em;
+      padding: $codeBlockPadding;
       background-color: $codeBlockBackgroundColor;
-      border-radius: 0.4em;
+      border-radius: $codeBlockBorderRadius;
       @include selectionColors (
         $codeBlockHighlightBackground,
         $codeBlockHighlightForeground
@@ -128,7 +128,7 @@ article {
 
 @media screen and (max-width: 800px) {
   article {
-    $side-margin: 1em;
+    $side-margin: $post-800px-padding;
     @include article-styling-800px($side-margin);
     .post-header { .post-title { font-size: 2em; } } 
     .header-seperator { margin: 1em (-$side-margin * 2); }
@@ -167,7 +167,7 @@ article {
 
 @media screen and (max-width: 600px) {
   article {
-    $padding: 1em;
+    $padding: $post-600px-padding;
     @include article-styling-600px($padding);
 
     img.root-img {

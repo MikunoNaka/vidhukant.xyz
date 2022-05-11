@@ -25,7 +25,6 @@ $postAltBackgroundColor: #384044;
 $codeBlockBackgroundColor: $postAltBackgroundColor;
 $codeBlockHighlightBackground: pink;
 
-
 // foreground
 $postDefForegroundColor: $defForegroundColor;
 $postAltForegroundColor: $altForegroundColor;
@@ -34,7 +33,7 @@ $codeCommentForegroundColor: gray;
 $codeBlockHighlightForeground: $altBackgroundColor;
 
 // $fg1: #d305e8;
-$fg1: #FFFFFF;
+$fg1: #AB47BC;
 $fg2: #28c7d4;
 $fg3: #F26413;
 $fg4: #23DEBA;
@@ -52,3 +51,13 @@ $articleBorderColor: $defForegroundColor;
 $postTitleColor: #dea2c2;
 
 // size definitions
+$postTitleFontSize: 2.5em;
+$postTitleAlignment: center;
+
+$codeBlockBorderRadius: 0.4em;
+$codeBlockPadding: 0.2em 1em;
+
+// responsive
+$post-800px-padding: 1em;
+$post-600px-padding: 1em;
+

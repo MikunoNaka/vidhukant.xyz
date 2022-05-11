@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="BLOG DESCRIPTION GHERE" />
   <link type="text/css" rel="stylesheet" href="/css/styles.css">
-  <link type="text/css" rel="stylesheet" href="/css/post.css">
+  <link type="text/css" rel="stylesheet" href="/css/posts.css">
   <title>
     BLOG TITLE HERE
   </title>
@@ -34,6 +34,7 @@
   <article>
     {{range .Posts}}
       <div class="post">
+        <a href="posts/{{ .ID }}"> {{ .Title }} </a>
       </div>
     {{end}}
   </article>

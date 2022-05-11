@@ -40,7 +40,8 @@ body {
 @include selectionColors($selectionBackground, $selectionForeground);
 
 a {
-
+  color: $defLinkForeground;
+  text-decoration: none;
 }
 
 

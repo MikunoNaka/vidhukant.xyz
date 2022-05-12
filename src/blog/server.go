@@ -19,6 +19,8 @@
 package blog
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -28,6 +30,10 @@ func Routes(r *gin.Engine) {
 
   // blog.vidhukant.xyz uses /blog as root
   blog := r.Group("/") 
+
+  blog.GET("/", func (ctx *gin.Context) {
+    ctx.Redirect(http.StatusMovedPermanently, "/posts")
+  })
 
   posts := blog.Group("/posts")
 

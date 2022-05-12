@@ -26,17 +26,37 @@
   <link type="text/css" rel="stylesheet" href="/css/styles.css">
   <link type="text/css" rel="stylesheet" href="/css/posts.css">
   <title>
-    BLOG TITLE HERE
+    Index Page
   </title>
 </head>
 <body>
   {{ template "partials/navbar.html" .}}
   <article>
-    {{range .Posts}}
-      <div class="post">
-        <a href="{{ .ID }}"> {{ .Title }} </a>
-      </div>
-    {{end}}
+    <div class="options">
+      <span class="limit-options">
+        Posts to show per page: 
+        {{ range .LimitOptions }}
+          <a href="?page={{ $.PageNumber }}&limit={{ .Value }}"
+            class="{{ if .Active }}active{{- end }}">
+            {{ .Value }}
+          </a>
+        {{ end }}
+      </span>
+      <span class="paging-options">
+        <a href="?page={{ .PrevPageNum }}&limit={{ .Limit }}">Previous Page</a>
+        <a href="?page={{ .NextPageNum }}&limit={{ .Limit }}">Next Page</a>
+      </span>
+    </div>
+    <div class="posts">
+      {{ range .Posts }}
+        <div class="post">
+          <a class="post-title" href="{{ .ID }}">{{ .Title }}</a>
+          <div class="post-info">
+            <span class="post-createdat">{{ .CreatedAt }}</span>
+          </div>
+        </div>
+      {{ end }}
+    </div>
   </article>
 </body>
 </html>

@@ -19,6 +19,9 @@
 package blog
 
 import (
+  "strconv"
+  "fmt"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -28,11 +31,13 @@ type Post struct {
   UpdatedAt *string
   Title     string
   Content   string
+  Tags      []string
 }
 
-func (db *dbhandler) getPosts() []Post {
+// start = read from nth row, limit = read n rows
+func (db *dbhandler) getPosts(start, limit int) []Post {
   rows, err := db.connection.Query(
-    `SELECT ID, DATE_FORMAT(CreatedAt, "%D %M %Y"), DATE_FORMAT(UpdatedAt, "%D %M %Y"), Title, Content FROM Posts`,
+    fmt.Sprintf("SELECT ID, DATE_FORMAT(CreatedAt, \"%%D %%M %%Y\"), Title FROM Posts LIMIT %d,%d", start, limit),
   ) 
   if err != nil {
 		panic(err.Error())
@@ -42,10 +47,12 @@ func (db *dbhandler) getPosts() []Post {
   var posts []Post
   for rows.Next() {
     var p Post
-    err := rows.Scan(&p.ID, &p.CreatedAt, &p.UpdatedAt, &p.Title, &p.Content)
+    err := rows.Scan(&p.ID, &p.CreatedAt, &p.Title)
     if err != nil {
       panic(err)
     }
+    // load post's tags
+    p.Tags = db.getPostTags(p.ID)
     posts = append(posts, p)
   }
 
@@ -69,4 +76,29 @@ func (db *dbhandler) getPost(id int) Post {
   }
 
   return post
+}
+
+func (db *dbhandler) getPostTags(id int) []string {
+
+  rows, err := db.connection.Query(
+    `SELECT Tags.Name FROM Post_Tags 
+    INNER JOIN Tags ON Post_Tags.TagID = Tags.ID 
+    WHERE Post_Tags.PostID = ` + strconv.Itoa(id),
+  ) 
+  if err != nil {
+		panic(err.Error())
+	}
+	defer rows.Close()
+
+  var tags []string
+  for rows.Next() {
+    var tag string
+    err := rows.Scan(&tag)
+    if err != nil {
+      panic(err)
+    }
+    tags = append(tags, tag)
+  }
+
+  return tags
 }

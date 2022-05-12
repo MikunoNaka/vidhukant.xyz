@@ -22,6 +22,46 @@
 
 article {
   @include article-styling;
+  .options {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .limit-options {
+      a {
+        color: $defForegroundColor;
+      }
+      .active {
+        color: $defLinkForeground;
+        font-weight: 600;
+      }
+    }
+
+    .paging-options {
+      width: 16em;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  .posts {
+    .post {
+      padding: 0.5em 0;
+      font-size: 1.4em;
+      .post-title {
+        color: $posts_postTitleColor;
+      }
+      .post-title:hover {
+        color: $posts_postHighlightedTitleColor;
+      }
+
+      .post-info {
+        font-size: 0.8em;
+        color: $posts_postInfoForegroundColor;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 1200px) {

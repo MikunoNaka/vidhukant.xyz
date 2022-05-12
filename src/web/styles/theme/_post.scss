@@ -28,17 +28,25 @@ $codeBlockHighlightBackground: pink;
 // foreground
 $postDefForegroundColor: $defForegroundColor;
 $postAltForegroundColor: $altForegroundColor;
+$postInfoForegroundColor: $boringForeground;
 $codeBlockForegroundColor: $postAltForegroundColor;
 $codeCommentForegroundColor: gray;
 $codeBlockHighlightForeground: $altBackgroundColor;
 
 // $fg1: #d305e8;
-$fg1: #AB47BC;
-$fg2: #28c7d4;
-$fg3: #F26413;
-$fg4: #23DEBA;
-$fg5: #A600FF;
-$fg6: #B623DE;
+// $fg1: #AB47BC;
+// $fg2: #28c7d4;
+// $fg3: #F26413;
+// $fg4: #23DEBA;
+// $fg5: #A600FF;
+// $fg6: #B623DE;
+
+$fg1: #FF79C6;
+$fg2: #50FA7B;
+$fg3: #E659A9;
+$fg4: #8E5EBC;
+$fg5: #23DEBA;
+$fg6: #A600FF;
 
 $listItemForeground: $fg3;
 
@@ -48,7 +56,8 @@ $articleBorderColor: $defForegroundColor;
 // $postTitleColor: #2aa386;
 // $postTitleColor: #dd237d;
 // $postTitleColor: #ffbb00;
-$postTitleColor: #dea2c2;
+// $postTitleColor: #dea2c2;
+$postTitleColor: #BD93F9;
 
 // size definitions
 $postTitleFontSize: 2.5em;
@@ -61,3 +70,6 @@ $codeBlockPadding: 0.2em 1em;
 $post-800px-padding: 1em;
 $post-600px-padding: 1em;
 
+$posts_postTitleColor: $defForegroundColor;
+$posts_postHighlightedTitleColor: $defLinkForeground;
+$posts_postInfoForegroundColor: $postInfoForegroundColor;

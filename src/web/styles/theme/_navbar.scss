@@ -17,10 +17,12 @@
  */
 
 // color definitions
-$navbarBackgroundColor: #232627;
-$navbarForegroundColor: #bbf2c0;
+$navbarBackgroundColor: $defBackgroundColor;
+// $navbarForegroundColor: #bbf2c0;
+$navbarForegroundColor: #EDEDED;
 
-$navbarShadow: 0 0.5em 1em $navbarBackgroundColor;
+// $navbarShadow: 0 0.5em 1em $navbarBackgroundColor;
+$navbarShadow: none;
 
 // size definitions
 $navbarHeight: 3rem;

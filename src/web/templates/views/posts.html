@@ -36,15 +36,15 @@
       <span class="limit-options">
         Posts to show per page: 
         {{ range .LimitOptions }}
-          <a href="?page={{ $.PageNumber }}&limit={{ .Value }}"
-            class="{{ if .Active }}active{{- end }}">
-            {{ .Value }}
-          </a>
+          <a href="?page={{ $.PageNumber }}&limit={{ . }}&first={{ $.FirstPost }}" 
+            class="{{ if eq . $.Limit }}active{{- end }}">
+            {{ . }}
+          </a> 
         {{ end }}
       </span>
       <span class="paging-options">
-        <a href="?page={{ .PrevPageNum }}&limit={{ .Limit }}">Previous Page</a>
-        <a href="?page={{ .NextPageNum }}&limit={{ .Limit }}">Next Page</a>
+        <a href="?page={{ .PrevPage }}&limit={{ .Limit }}&first={{ .PrevFirst }}">Previous Page</a>
+        <a href="?page={{ .NextPage }}&limit={{ .Limit }}&first={{ .NextFirst }}">Next Page</a>
       </span>
     </div>
     <div class="posts">

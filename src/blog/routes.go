@@ -34,49 +34,42 @@ func init() {
   base = newHandler(connection)
 }
 
-// used by /posts to handle number of posts loaded
-type limitOption struct {
-  Value  int
-  Active bool
-}
-
 func getPosts(ctx *gin.Context) {
-  limitOptions := []*limitOption {
-    {10, false}, {25, false}, {50, false},
-    // for testing
-    // {1, false}, {2, false}, {3, false},
-    // {4, false}, {5, false}, {6, false},
-  }
-
+  limitOptions := []int{10, 20, 30}
   limit := 10
   // if limit is in url query use that
   if l := ctx.Query("limit"); l != "" {
     limit, _ = strconv.Atoi(l)
   }
 
-  // set current option to true 
-  // so we can visually identify it using CSS
-  for _,i := range limitOptions {
-    if i.Value == limit {
-      i.Active = true
-    }
-  }
-
   pageNum := 1
-  // if limit is in url query use that
+  // if pageNum is in url query use that
   if p := ctx.Query("page"); p != "" {
     pageNum, _ = strconv.Atoi(p)
     // pageNum can't be less than 1
     if pageNum < 1 { pageNum = 1 }
   }
 
+  // if firstPost is in url query use that
+  firstPost := limit * (pageNum - 1)
+  if f := ctx.Query("first"); f != "" {
+    firstPost, _ = strconv.Atoi(f)
+    // firstPost can't be less than 0
+    if firstPost < 0 {firstPost = 0}
+  }
+
   // get posts from database
-  posts := base.getPosts((limit * (pageNum -1)), limit);
+  posts := base.getPosts(firstPost, limit);
 
   ctx.HTML(http.StatusOK, "views/posts.html", gin.H {
     "LimitOptions": limitOptions,
     "Limit": limit,
+    "FirstPost": firstPost,
     "PageNumber": pageNum,
+    "PrevPage": pageNum - 1,
+    "NextPage": pageNum + 1,
+    "PrevFirst": firstPost - limit,
+    "NextFirst": firstPost + limit,
     "Posts": posts,
   })
 }

@@ -59,14 +59,24 @@ func getPosts(ctx *gin.Context) {
   }
 
   // get posts from database
-  posts := base.getPosts(firstPost, limit);
+  posts := base.getPosts(firstPost, limit)
 
+  showNext := true
+  // TODO: if tags are specified, replace with nil
+  // check if difference between all post count and posts shown is same
+  if base.getPostCount(nil) - (firstPost + len(posts)) < 1 {
+    showNext = false
+  }
+
+  // TODO: calculate if nextpage/prevpage button should be hidden
   ctx.HTML(http.StatusOK, "views/posts.html", gin.H {
     "LimitOptions": limitOptions,
     "Limit": limit,
     "FirstPost": firstPost,
     "PageNumber": pageNum,
     "PrevPage": pageNum - 1,
+	  "ShowPrev": !(firstPost == 0),
+	  "ShowNext": showNext,
     "NextPage": pageNum + 1,
     "PrevFirst": firstPost - limit,
     "NextFirst": firstPost + limit,

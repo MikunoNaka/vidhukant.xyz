@@ -16,24 +16,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package blog
+@import "global";
 
-import (
-	"github.com/gin-gonic/gin"
-)
+$buttonBackgroundColor: $altBackgroundColor;
 
-func Routes(r *gin.Engine) {
-  // load html templates
-  r.LoadHTMLGlob("web/templates/**/*")
+$buttonBorderColor: #000000;
 
-  // blog.vidhukant.xyz uses /blog as root
-  blog := r.Group("/") 
+$welcomeHeadingFG: $fg-purple0;
+$welcomeHeadingAltFG: $fg-yellow0;
 
-  posts := blog.Group("/posts")
 
-  // fetch index page
-  posts.GET("/", getPosts)
 
-  // fetch a post
-  posts.GET("/:id", getPost)
-}

@@ -33,16 +33,13 @@
   width: 90%;
 }
 
-@mixin home-body-800px($val) {
+@mixin home-body-800px {
   min-width: 560px;
-  width: auto;
-  margin: calc($val * 1.5) $val;
 }
 
-@mixin home-body-600px($val) {
+@mixin home-body-600px {
   min-width: 0;
   width: 100%;
   margin: 0;
-  border: none;
-  padding: $val;
+  padding: 1rem;
 }

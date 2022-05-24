@@ -21,7 +21,7 @@ package main
 import (
   "net/http"
 
-  // "github.com/gin-gonic/contrib/static"
+  "github.com/gin-gonic/contrib/static"
   "github.com/gin-gonic/gin"
 
   // internal routers
@@ -35,9 +35,9 @@ func main() {
   r.Use(gin.Recovery())
 
   // in production nginx should handle the static files
-  // r.Use(static.Serve("/", static.LocalFile("./../blog/", true)))
+  r.Use(static.Serve("/", static.LocalFile("./../blog/", true)))
 
-  r.GET("/", func (ctx *gin.Context) {
+  r.GET("/x", func (ctx *gin.Context) {
     ctx.HTML(http.StatusOK, "views/home.html", gin.H {
       "Message": "Hello, Gin!!",
     })

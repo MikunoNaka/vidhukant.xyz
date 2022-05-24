@@ -16,34 +16,33 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package main
+@import "../theme/global";
 
-import (
-  "net/http"
+@mixin home-body {
+  background-color: $defBackgroundColor;
+  min-width: 1150px;
+  width: 60%;
+  max-width: 1920px;
+  margin: 0em auto;
+  padding: 1em 2em;
+}
 
-  // "github.com/gin-gonic/contrib/static"
-  "github.com/gin-gonic/gin"
+@mixin home-body-1200px {
+  margin: 2em auto;
+  min-width: 780px;
+  width: 90%;
+}
 
-  // internal routers
-  "github.com/MikunoNaka/vidhukant.xyz/blog"
-)
+@mixin home-body-800px($val) {
+  min-width: 560px;
+  width: auto;
+  margin: calc($val * 1.5) $val;
+}
 
-func main() {
-  // initialise the router
-  r := gin.New()
-  r.Use(gin.Logger())
-  r.Use(gin.Recovery())
-
-  // in production nginx should handle the static files
-  // r.Use(static.Serve("/", static.LocalFile("./../blog/", true)))
-
-  r.GET("/", func (ctx *gin.Context) {
-    ctx.HTML(http.StatusOK, "views/home.html", gin.H {
-      "Message": "Hello, Gin!!",
-    })
-  })
-
-  blog.Routes(r)
-
-  r.Run(":3000")
+@mixin home-body-600px($val) {
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  border: none;
+  padding: $val;
 }

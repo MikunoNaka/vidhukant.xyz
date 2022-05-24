@@ -16,34 +16,40 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package main
+@import "partials/home";
+@import "theme/global";
 
-import (
-  "net/http"
+body {
+  @include home-body;
 
-  // "github.com/gin-gonic/contrib/static"
-  "github.com/gin-gonic/gin"
+  .header {
+    text-align: center;
+    #welcome-title { 
+      color: $fg-purple0; 
+    }
+    #welcome-subtitle { 
+      font-size: 1.1rem;
+      color: $fg-yellow0; 
+    }
+  }
+}
 
-  // internal routers
-  "github.com/MikunoNaka/vidhukant.xyz/blog"
-)
+@media screen and (max-width: 1200px) {
+  body {
+    @include home-body-1200px;
+  }
+}
 
-func main() {
-  // initialise the router
-  r := gin.New()
-  r.Use(gin.Logger())
-  r.Use(gin.Recovery())
+@media screen and (max-width: 800px) {
+  body {
+    $side-margin: 1em;
+    @include home-body-800px($side-margin);
+  }
+}
 
-  // in production nginx should handle the static files
-  // r.Use(static.Serve("/", static.LocalFile("./../blog/", true)))
-
-  r.GET("/", func (ctx *gin.Context) {
-    ctx.HTML(http.StatusOK, "views/home.html", gin.H {
-      "Message": "Hello, Gin!!",
-    })
-  })
-
-  blog.Routes(r)
-
-  r.Run(":3000")
+@media screen and (max-width: 600px) {
+  body {
+    $padding: 1em;
+    @include home-body-600px($padding);
+  }
 }

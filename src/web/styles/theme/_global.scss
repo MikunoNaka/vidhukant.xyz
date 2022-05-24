@@ -18,7 +18,8 @@
 
 // global color definitions
 // background
-$defBackgroundColor: #061820;
+// $defBackgroundColor: #061820;
+$defBackgroundColor: #151718;
 // $altBackgroundColor: #1a2a30;
 // $defBackgroundColor: #383A59;
 $altBackgroundColor: #282A36;
@@ -31,6 +32,15 @@ $boringForeground: #b5c4c2;
 $selectionForeground: #FFFFFF;
 // $defLinkForeground: #3691b8;
 $defLinkForeground: #6d8ee2;
+
+// colored foregrounds
+$fg-purple0: #9c79c5;
+
+$fg-pink0: #e82884;
+
+$fg-green0: #9c79c5;
+
+$fg-yellow0: #FFFF99;
 
 
 // apply text selection/highlight colors easily

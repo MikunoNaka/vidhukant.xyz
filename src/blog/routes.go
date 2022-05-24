@@ -95,3 +95,12 @@ func getPost(ctx *gin.Context) {
     "Content": template.HTML(post.Content),
   })
 }
+
+func HomePage(ctx *gin.Context) {
+  recentPosts := base.getPostsReverse(0, 10)
+  // TODO: also render some tags
+
+  ctx.HTML(http.StatusOK, "views/home.html", gin.H {
+    "RecentPosts": recentPosts,
+  })
+}

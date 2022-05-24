@@ -41,6 +41,29 @@
       <a href="/about">About This Blog</a>
     </span>
   </div>
+
+  <div class="recents" id="recents">
+    <h2 class="recents-label" id="recent-posts-label">
+      My Recent Articles:
+    </h2>
+    <div class="posts" id="recent-posts">
+      {{ range .RecentPosts }}
+        <div class="post">
+          <a href="/posts/{{ .ID }}">{{ .Title }}</a>
+          <span>- {{ .CreatedAt }}</span>
+        </div>
+      {{ end }}
+    </div>
+    <!-- obviously there are no "recent" tags, 
+      just keeping up with naming scheme -->
+    <h2 class="recents-label" id="recent-tags-label">
+      Browse Articles by Tags:
+    </h2>
+    <div class="tags" id="recent-tags">
+
+    </div>
+  </div>
+
   {{ .Message }}
 </body>
 </html>

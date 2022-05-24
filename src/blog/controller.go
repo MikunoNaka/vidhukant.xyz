@@ -83,6 +83,31 @@ func (db *dbhandler) getPosts(start, limit int) []Post {
   return posts
 }
 
+// same as getPosts but in descending order
+func (db *dbhandler) getPostsReverse(start, limit int) []Post {
+  rows, err := db.connection.Query(
+    fmt.Sprintf("SELECT ID, DATE_FORMAT(CreatedAt, \"%%D %%M %%Y\"), Title FROM Posts ORDER BY ID DESC LIMIT %d,%d", start, limit),
+  ) 
+  if err != nil {
+    panic(err.Error())
+  }
+  defer rows.Close()
+
+  var posts []Post
+  for rows.Next() {
+    var p Post
+    err := rows.Scan(&p.ID, &p.CreatedAt, &p.Title)
+    if err != nil {
+      panic(err)
+    }
+    // load post's tags
+    p.Tags = db.getPostTags(p.ID)
+    posts = append(posts, p)
+  }
+
+  return posts
+}
+
 func (db *dbhandler) getPost(id int) Post {
   rows, err := db.connection.Prepare(
     `SELECT ID, DATE_FORMAT(CreatedAt, "%D %M %Y"), DATE_FORMAT(UpdatedAt, "%D %M %Y"), Title, Content FROM Posts WHERE ID = ?`,

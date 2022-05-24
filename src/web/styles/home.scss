@@ -61,6 +61,31 @@ body { @include home-body; }
   }
 }
 
+.recents {
+  display: flex;
+  flex-direction: column;
+
+  .recents-label {
+    color: $recentsLabelFG;
+  }
+
+  .posts, .tags {
+    background-color: $recentsItemBG;
+    border: 1px solid $buttonBorderColor;
+    width: 100%;
+    padding: 3px 7px;
+  }
+
+  .posts {
+    font-size: 1.3rem;
+    max-height: 15em;
+  }
+
+  .tags {
+    height: 28em;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   body { @include home-body-1200px; }
 }

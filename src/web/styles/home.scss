@@ -67,6 +67,7 @@ body { @include home-body; }
 
   .recents-label {
     color: $recentsLabelFG;
+    margin-bottom: 0.5rem;
   }
 
   .posts, .tags {
@@ -74,11 +75,15 @@ body { @include home-body; }
     border: 1px solid $buttonBorderColor;
     width: 100%;
     padding: 3px 7px;
+    overflow-y: scroll;
   }
 
   .posts {
     font-size: 1.3rem;
     max-height: 15em;
+    a {
+      word-break: break-all;
+    }
   }
 
   .tags {
@@ -107,6 +112,13 @@ body { @include home-body; }
     a {
       font-size: 0.9em;
       min-width: 8.5em;
+    }
+  }
+  .recents {
+    .posts, .tags {
+      padding: 0.2rem 0.8rem;
+      width: 100%;
+      border: none;
     }
   }
 }

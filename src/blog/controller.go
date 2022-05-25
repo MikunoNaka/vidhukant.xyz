@@ -81,7 +81,7 @@ func (db *dbhandler) getPosts(start, limit int, reversed bool, tags string) []Po
 
   rows, err := db.connection.Query(qry) 
   if err != nil {
-    panic(err.Error())
+    panic(err)
   }
   defer rows.Close()
 

@@ -60,9 +60,13 @@ func getPosts(ctx *gin.Context) {
 
   tags := ctx.Query("tags")
 
-  // TODO: ask user to sort by oldest or newest first
-  // get posts from database
+  // check and sort by oldest/newest first with oldest as fallback
   sortByOldest := true
+  if s := ctx.Query("sort_by"); s == "newest" {
+    sortByOldest = false
+  }
+
+  // get posts from database
   posts := base.getPosts(firstPost, limit, sortByOldest, tags)
 
   showNext := true
@@ -72,7 +76,6 @@ func getPosts(ctx *gin.Context) {
     showNext = false
   }
 
-  // TODO: calculate if nextpage/prevpage button should be hidden
   ctx.HTML(http.StatusOK, "views/posts.html", gin.H {
     "LimitOptions": limitOptions,
     "Limit": limit,
@@ -85,6 +88,7 @@ func getPosts(ctx *gin.Context) {
     "PrevFirst": firstPost - limit,
     "NextFirst": firstPost + limit,
     "Posts": posts,
+    "SortByOldest": sortByOldest,
   })
 }
 

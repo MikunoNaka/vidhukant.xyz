@@ -32,7 +32,7 @@
 <body>
   {{ template "partials/navbar.html" .}}
   <article>
-    <div class="options">
+    <div class="options" id="options-header">
       <span class="limit-options">
         Posts to show per page: 
         {{ range .LimitOptions }}
@@ -42,13 +42,12 @@
           </a> 
         {{ end }}
       </span>
-      <span class="paging-options">
-        {{ if .ShowPrev }}
-          <a href="?page={{ .PrevPage }}&limit={{ .Limit }}&first={{ .PrevFirst }}">Previous Page</a>
-        {{- end }}
-        {{ if .ShowNext }}
-          <a href="?page={{ .NextPage }}&limit={{ .Limit }}&first={{ .NextFirst }}">Next Page</a>
-        {{- end }}
+      <span id="page-sort">
+        Currently sorting by {{ if .SortByOldest }}oldest{{ else }}newest{{ end }} first.
+        <!--a href="?page={{ .PageNumber }}&limit={{ .Limit }}&first={{ .FirstPost }}&sort_by={{ if .SortByOldest }}newest{{ else }}oldest{{ end }}"-->
+        <a href="?limit={{ .Limit }}&sort_by={{ if .SortByOldest }}newest{{ else }}oldest{{ end }}">
+          Sort by {{ if .SortByOldest }}newest{{ else }}oldest{{ end }} first?
+        </a>
       </span>
     </div>
     <div class="posts">
@@ -58,7 +57,7 @@
             <a class="post-title" href="{{ .ID }}">{{ .Title }}</a>
             <span class="post-tags">
               {{ range .Tags }}
-                <a class="post-tag" href="/posts/1">{{ . }}</a>
+                <a class="post-tag" href="/posts?tags={{ .ID }}">{{ .Name }}</a>
               {{ end }}
             </span>
           </span>
@@ -67,6 +66,17 @@
           </div>
         </div>
       {{ end }}
+    </div>
+    <div class="options" id="options-footer">
+      <span class="paging-options">
+        {{ if .ShowPrev }}
+          <a href="?page={{ .PrevPage }}&limit={{ .Limit }}&first={{ .PrevFirst }}&sort_by={{ if .SortByOldest }}oldest{{ else }}newest{{ end }}">Previous Page</a>
+        {{- end }}
+
+        {{ if .ShowNext }}
+        <a href="?page={{ .NextPage }}&limit={{ .Limit }}&first={{ .NextFirst }}&sort_by={{ if .SortByOldest }}oldest{{ else }}newest{{ end }}">Next Page</a>
+        {{- end }}
+      </span>
     </div>
   </article>
 </body>

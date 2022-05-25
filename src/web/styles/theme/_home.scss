@@ -17,6 +17,7 @@
  */
 
 @import "global";
+@import "post";
 
 $buttonBackgroundColor: $altBackgroundColor;
 
@@ -28,3 +29,7 @@ $recentsLabelFG: $fg-pink0;
 
 $recentsItemBG: $altBackgroundColor;
 
+// $postTitleFG: #d28bf0;
+$postTitleFG: $defForegroundColor;
+// $postCreatedAtFG: #959495;
+$postCreatedAtFG: #c2c1c2;

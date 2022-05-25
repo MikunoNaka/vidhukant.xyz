@@ -49,8 +49,7 @@
     <div class="posts" id="recent-posts">
       {{ range .RecentPosts }}
         <div class="post">
-          <a href="/posts/{{ .ID }}">{{ .Title }}</a>
-          <span>- {{ .CreatedAt }}</span>
+          <span class="post-createdat">{{ .CreatedAt }}:</span> <a href="/posts/{{ .ID }}">{{ .Title }}</a>
         </div>
       {{ end }}
     </div>

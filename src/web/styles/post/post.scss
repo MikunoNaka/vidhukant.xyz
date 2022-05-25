@@ -27,6 +27,7 @@ article {
       font-size: $postTitleFontSize;
       text-align: $postTitleAlignment;
       color: $postTitleColor;
+      word-break: break-word;
     }
     .post-info {
       color: $postInfoForegroundColor;
@@ -73,10 +74,6 @@ article {
       all: initial;
       max-height: 25em;
       margin: 0.5em;
-      // min-width: 20%;
-      // max-width: 30%;
-      // min-height: 300px;
-      // max-height: 600px;
     }
   }
 

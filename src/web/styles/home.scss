@@ -80,9 +80,22 @@ body { @include home-body; }
 
   .posts {
     font-size: 1.3rem;
-    max-height: 15em;
-    a {
-      word-break: break-all;
+    max-height: 13em;
+    .post {
+      margin: 0.3em auto;
+      a {
+        word-break: break-word;
+        color: $postTitleFG;
+        // font-weight: bold;
+        font-size: 0.95em;
+      }
+      a:hover {
+        color: $defLinkForeground;
+      }
+      .post-createdat {
+        color: $postCreatedAtFG;
+        font-size: 0.9em;
+      }
     }
   }
 
@@ -119,6 +132,16 @@ body { @include home-body; }
       padding: 0.2rem 0.8rem;
       width: 100%;
       border: none;
+    }
+    .posts {
+      .post {
+        a {
+          font-size: 0.8em;
+        }
+        .post-createdat {
+          font-size: 0.7em;
+        }
+      }
     }
   }
 }

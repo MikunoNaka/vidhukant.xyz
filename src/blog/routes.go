@@ -61,9 +61,9 @@ func getPosts(ctx *gin.Context) {
   tags := ctx.Query("tags")
 
   // check and sort by oldest/newest first with oldest as fallback
-  sortByOldest := true
-  if s := ctx.Query("sort_by"); s == "newest" {
-    sortByOldest = false
+  sortByOldest := false
+  if s := ctx.Query("sort_by"); s == "oldest" {
+    sortByOldest = true
   }
 
   // get posts from database

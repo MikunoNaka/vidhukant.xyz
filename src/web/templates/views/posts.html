@@ -36,7 +36,7 @@
       <span class="limit-options">
         Posts to show per page: 
         {{ range .LimitOptions }}
-          <a href="?page={{ $.PageNumber }}&limit={{ . }}&first={{ $.FirstPost }}" 
+          <a href="?page={{ $.PageNumber }}&limit={{ . }}&first={{ $.FirstPost }}&sort_by={{ if $.SortByOldest }}oldest{{ else }}newest{{ end }}"
             class="{{ if eq . $.Limit }}active{{- end }}">
             {{ . }}
           </a> 

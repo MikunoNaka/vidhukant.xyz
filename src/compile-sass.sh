@@ -1,13 +1,6 @@
 #!/bin/sh
 
-cmd="sass"
-
-while getopts 'w' flag; do
-  case "${flag}" in
-    w) cmd="sass -w";;
-    *) ;;
-  esac
-done
+cmd="sass $@"
 
 $cmd web/styles/styles.scss:../blog/css/styles.css &
 $cmd web/styles/home.scss:../blog/css/home.css &

@@ -31,7 +31,12 @@ type Post struct {
   UpdatedAt *string
   Title     string
   Content   string
-  Tags      []string
+  Tags      []Tag
+}
+
+type Tag struct {
+  ID   int
+  Name string
 }
 
 func (db *dbhandler) getPostCount(tag *int) int {
@@ -59,8 +64,16 @@ func (db *dbhandler) getPostCount(tag *int) int {
 }
 
 // start = read from nth row, limit = read n rows
-func (db *dbhandler) getPosts(start, limit int, reversed bool) []Post {
-  qry := "SELECT ID, DATE_FORMAT(CreatedAt, '%D %M %Y'), Title FROM Posts"
+func (db *dbhandler) getPosts(start, limit int, reversed bool, tags string) []Post {
+  var qry string
+  if len(tags) < 1 {
+    qry = "SELECT ID, DATE_FORMAT(CreatedAt, '%D %M %Y'), Title FROM Posts"
+  } else {
+    qry = `SELECT DISTINCT Posts.ID, DATE_FORMAT(Posts.CreatedAt, '%D %M %Y'), Posts.Title
+    FROM Post_Tags 
+    INNER JOIN Posts ON Post_Tags.PostID = Posts.ID
+    WHERE Post_Tags.TagID IN (` + tags + `)`
+  }
   if reversed {
     qry = qry + " ORDER BY ID DESC"
   }
@@ -106,10 +119,9 @@ func (db *dbhandler) getPost(id int) Post {
   return post
 }
 
-func (db *dbhandler) getPostTags(id int) []string {
-
+func (db *dbhandler) getPostTags(id int) []Tag {
   rows, err := db.connection.Query(
-    `SELECT Tags.Name FROM Post_Tags 
+    `SELECT Tags.ID, Tags.Name FROM Post_Tags 
     INNER JOIN Tags ON Post_Tags.TagID = Tags.ID 
     WHERE Post_Tags.PostID = ` + strconv.Itoa(id),
   ) 
@@ -118,14 +130,35 @@ func (db *dbhandler) getPostTags(id int) []string {
 	}
 	defer rows.Close()
 
-  var tags []string
+  var tags []Tag
   for rows.Next() {
-    var tag string
-    err := rows.Scan(&tag)
+    var tag Tag
+    err := rows.Scan(&tag.ID, &tag.Name)
     if err != nil {
       panic(err)
     }
     tags = append(tags, tag)
+  }
+
+  return tags
+}
+
+// returns all tags
+func (db *dbhandler) getTags() []Tag {
+  rows, err := db.connection.Query("SELECT ID, Name FROM Tags") 
+  if err != nil {
+    panic(err.Error())
+  }
+  defer rows.Close()
+
+  var tags []Tag
+  for rows.Next() {
+    var t Tag
+    err := rows.Scan(&t.ID, &t.Name)
+    if err != nil {
+      panic(err)
+    }
+    tags = append(tags, t)
   }
 
   return tags

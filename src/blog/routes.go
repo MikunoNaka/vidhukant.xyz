@@ -59,7 +59,9 @@ func getPosts(ctx *gin.Context) {
   }
 
   // get posts from database
-  posts := base.getPosts(firstPost, limit)
+  // TODO: ask user to sort by oldest or newest first
+  sortByOldest := true
+  posts := base.getPosts(firstPost, limit, sortByOldest)
 
   showNext := true
   // TODO: if tags are specified, replace with nil
@@ -97,7 +99,7 @@ func getPost(ctx *gin.Context) {
 }
 
 func HomePage(ctx *gin.Context) {
-  recentPosts := base.getPostsReverse(0, 10)
+  recentPosts := base.getPosts(0, 10, true)
   // TODO: also render some tags
 
   ctx.HTML(http.StatusOK, "views/home.html", gin.H {

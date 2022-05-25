@@ -59,35 +59,14 @@ func (db *dbhandler) getPostCount(tag *int) int {
 }
 
 // start = read from nth row, limit = read n rows
-func (db *dbhandler) getPosts(start, limit int) []Post {
-  rows, err := db.connection.Query(
-    fmt.Sprintf("SELECT ID, DATE_FORMAT(CreatedAt, \"%%D %%M %%Y\"), Title FROM Posts LIMIT %d,%d", start, limit),
-  ) 
-  if err != nil {
-    panic(err.Error())
+func (db *dbhandler) getPosts(start, limit int, reversed bool) []Post {
+  qry := "SELECT ID, DATE_FORMAT(CreatedAt, '%D %M %Y'), Title FROM Posts"
+  if reversed {
+    qry = qry + " ORDER BY ID DESC"
   }
-  defer rows.Close()
+  qry = fmt.Sprintf("%s LIMIT %d,%d", qry, start, limit)
 
-  var posts []Post
-  for rows.Next() {
-    var p Post
-    err := rows.Scan(&p.ID, &p.CreatedAt, &p.Title)
-    if err != nil {
-      panic(err)
-    }
-    // load post's tags
-    p.Tags = db.getPostTags(p.ID)
-    posts = append(posts, p)
-  }
-
-  return posts
-}
-
-// same as getPosts but in descending order
-func (db *dbhandler) getPostsReverse(start, limit int) []Post {
-  rows, err := db.connection.Query(
-    fmt.Sprintf("SELECT ID, DATE_FORMAT(CreatedAt, \"%%D %%M %%Y\"), Title FROM Posts ORDER BY ID DESC LIMIT %d,%d", start, limit),
-  ) 
+  rows, err := db.connection.Query(qry) 
   if err != nil {
     panic(err.Error())
   }

@@ -19,6 +19,7 @@
 package blog
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -32,6 +33,13 @@ var base *dbhandler
 func init() {
   connection := db.ConnectDB()
   base = newHandler(connection)
+}
+
+func filterByTagInput(ctx *gin.Context) {
+  x := ctx.PostForm("1")
+  fmt.Println(x)
+  ctx.HTML(http.StatusOK, "views/posts.html", gin.H {
+  })
 }
 
 func getPosts(ctx *gin.Context) {
@@ -89,6 +97,7 @@ func getPosts(ctx *gin.Context) {
     "NextFirst": firstPost + limit,
     "Posts": posts,
     "SortByOldest": sortByOldest,
+    "Tags": base.getTags(),
   })
 }
 

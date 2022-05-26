@@ -19,6 +19,7 @@
 @import "../theme/global";
 @import "../theme/post";
 @import "../partials/article";
+@import "../partials/tags_menu";
 
 article {
   @include article-styling;

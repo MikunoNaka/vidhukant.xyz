@@ -47,7 +47,6 @@ func (db *dbhandler) getPostCount(tag *int) int {
 	// because some posts might not even have tags
     query = "SELECT COUNT(*) FROM Posts"
   }
-  fmt.Println("qry: ", query)
 
   rows, err := db.connection.Prepare(query)
   if err != nil {

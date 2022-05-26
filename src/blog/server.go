@@ -33,6 +33,7 @@ func Routes(r *gin.Engine) {
 
   // fetch index page
   posts.GET("/", getPosts)
+  posts.POST("/filter-by-tags", filterByTagInput)
 
   // fetch a post
   posts.GET("/:id", getPost)

@@ -19,14 +19,20 @@
 package blog
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/MikunoNaka/vidhukant.xyz/db"
 	"github.com/gin-gonic/gin"
 )
+
+type tagsSelection struct {
+  TagID      int
+  TagName    string
+  IsSelected bool
+}
 
 // database connection
 var base *dbhandler
@@ -35,11 +41,23 @@ func init() {
   base = newHandler(connection)
 }
 
+// receives tags through form POST and redirects to /posts?tags=....
 func filterByTagInput(ctx *gin.Context) {
-  x := ctx.PostForm("1")
-  fmt.Println(x)
-  ctx.HTML(http.StatusOK, "views/posts.html", gin.H {
-  })
+  var tagInput struct {
+    Tags []int `form:"tags"`
+  }
+  ctx.ShouldBind(&tagInput)
+  tags := tagInput.Tags
+
+  var tagsStringified string
+  for i, j := range tags {
+    tagsStringified = tagsStringified + strconv.Itoa(j)
+    if i != len(tags) - 1 {
+      tagsStringified = tagsStringified + ","
+    }
+  }
+
+  ctx.Redirect(http.StatusMovedPermanently, "/posts?tags=" + tagsStringified)
 }
 
 func getPosts(ctx *gin.Context) {
@@ -84,6 +102,31 @@ func getPosts(ctx *gin.Context) {
     showNext = false
   }
 
+  // turn the tags from URL query into []int
+  var tagsSlice []int
+  for _, i := range strings.Split(tags, ",") {
+    t, _ := strconv.Atoi(i)
+    tagsSlice = append(tagsSlice, t)
+  }
+
+  // check if particular tags are selected
+  var selectedTags []tagsSelection
+  for _, i := range base.getTags() {
+    var t tagsSelection 
+    t.TagID = i.ID
+    t.TagName = i.Name
+
+    // check and set t.IsSelected to true
+    for _, j := range tagsSlice {
+      if t.TagID == j {
+        t.IsSelected = true
+        break
+      }
+    }
+
+    selectedTags = append(selectedTags, t)
+  }
+
   ctx.HTML(http.StatusOK, "views/posts.html", gin.H {
     "LimitOptions": limitOptions,
     "Limit": limit,
@@ -97,7 +140,7 @@ func getPosts(ctx *gin.Context) {
     "NextFirst": firstPost + limit,
     "Posts": posts,
     "SortByOldest": sortByOldest,
-    "Tags": base.getTags(),
+    "Tags": selectedTags,
   })
 }
 

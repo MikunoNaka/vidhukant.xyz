@@ -57,7 +57,8 @@ $articleBorderColor: $defForegroundColor;
 // $postTitleColor: #dd237d;
 // $postTitleColor: #ffbb00;
 // $postTitleColor: #dea2c2;
-$postTitleColor: #BD93F9;
+// $postTitleColor: #BD93F9;
+$postTitleColor: $fg-purple0;
 
 // size definitions
 $postTitleFontSize: 2.5em;
@@ -74,3 +75,5 @@ $posts_postTitleColor: $defForegroundColor;
 $posts_postHighlightedTitleColor: $defLinkForeground;
 $posts_postInfoForegroundColor: $postInfoForegroundColor;
 $posts_postTagForegroundColor: $postInfoForegroundColor;
+
+$tagButtonActiveBG: $postTitleColor;

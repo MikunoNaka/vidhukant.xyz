@@ -24,8 +24,8 @@
   <form class="tags-switcher" action="/posts/filter-by-tags" method="POST">
       {{ range .Tags }}
         <label class="tag-label">
-          <input type="checkbox" value="{{ .ID }}">
-          <span class="tag">{{ .Name }}</span>
+          <input type="checkbox" name="tags" value="{{ .TagID }}" id="{{ .TagID }}" {{ if .IsSelected }}checked{{ end }}>
+          <span class="tag">{{ .TagName }}</span>
         </label>
       {{ end }}
       <input type="submit"/>

@@ -17,6 +17,7 @@
  */
 
 @import "../theme/global";
+@import "../theme/post";
 
 @mixin button {
   display: flex;
@@ -45,19 +46,15 @@
     justify-content: space-evenly;
     max-height: 20em;
     min-width: 50%;
-    border: 1px solid purple;
     .tag-label {
       .tag {
         @include button;
       }
       input {
-        display: none; // might make it not work
-        opacity: 0;
-        width: 0;
-        height: 0;
+        display: none;
       }
       input:checked + .tag {
-        background-color: #2196F3;
+        background-color: $tagButtonActiveBG;
       }
     }
     input[type=submit] {

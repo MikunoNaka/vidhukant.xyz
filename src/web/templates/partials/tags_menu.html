@@ -18,9 +18,6 @@
 
 {{ define "partials/tags_menu.html" }}
 <div class="tags-menu">
-  <h1 class="tags-menu-label">
-    Select Tags:
-  </h1>
   <form class="tags-switcher" action="/posts/filter-by-tags" method="POST">
     <div class="options">
       {{ range .Tags }}
@@ -31,7 +28,7 @@
       {{ end }}
     </div>
     <div class="menu">
-      <input type="submit"/>
+      <input type="submit" value="Filter"/>
     </div>
   </form>
 </div>

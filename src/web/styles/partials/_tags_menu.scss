@@ -91,9 +91,10 @@
       }
     }
     .menu {
-      input[type=submit] {
+      input {
         @include button;
         background-color: rgba($tagButtonActiveBG, 0.9);
+        margin: 0.1em 1em;
       }
       input:hover {
         @include button-hover;
@@ -123,7 +124,7 @@
     .tags-switcher {
       // for some reason it won't work unless I do .1 .2 .3 thing
       .options .tag-label .tag, 
-      .menu input[type=submit] {
+      .menu input {
         font-size: 1em;
       }
     }

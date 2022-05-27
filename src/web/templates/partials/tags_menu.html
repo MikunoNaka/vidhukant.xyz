@@ -22,13 +22,17 @@
     Select Tags:
   </h1>
   <form class="tags-switcher" action="/posts/filter-by-tags" method="POST">
+    <div class="options">
       {{ range .Tags }}
         <label class="tag-label">
           <input type="checkbox" name="tags" value="{{ .TagID }}" id="{{ .TagID }}" {{ if .IsSelected }}checked{{ end }}>
           <span class="tag">{{ .TagName }}</span>
         </label>
       {{ end }}
+    </div>
+    <div class="menu">
       <input type="submit"/>
+    </div>
   </form>
 </div>
 {{ end }}

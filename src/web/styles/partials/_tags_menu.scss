@@ -20,71 +20,97 @@
 @import "../theme/post";
 @import "../theme/home";
 
+
 @mixin button {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $altBackgroundColor;
   color: $defForegroundColor;
-  height: 3rem;
-  min-width: 8.5em;
+  font-size: 1.1em; 
+  padding: 0.5em 1.3em;
   border-radius: 2em;
   border: 1px solid $buttonBorderColor;
 }
 
 .tags-menu {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid green;
+  max-width: 1920px;
+  width: 100%;
+  margin: auto;
 
   .tags-menu-label {
     color: $tagsMenuLabelFG;
   }
 
   .tags-switcher {
-    border: 1px solid green;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    max-height: 20em;
+    min-width: 1000px;
     width: 50%;
-    min-width: 60em;
-    max-width: 1300px;
-
-    .tag-label {
-      .tag {
-        @include button;
-      }
-      input {
-        display: none;
-      }
-      input:checked + .tag {
-        background-color: $tagButtonActiveBG;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    .options, .menu {
+      margin: 0.5em auto;
+    }
+    .options {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      min-width: 80%;
+      .tag-label {
+        justify-self: center;
+        margin: 0.1em 1em;
+        .tag {
+          @include button;
+        }
+        input {
+          display: none;
+        }
+        input:checked + .tag {
+          background-color: $tagButtonActiveBG;
+        }
       }
     }
-
-    input[type=submit] {
-      @include button;
+    .menu {
+      input[type=submit] {
+        @include button;
+        transition: background-color 400ms;
+      }
+      input:hover {
+        background-color: $tagButtonActiveBG;
+        transition: background-color 250ms;
+      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
 
 @media screen and (max-width: 1200px) {
-  .tags-menu .tags-switcher {
-    min-height: 8em;
-    width: 70%;
-    min-width: 0;
+  .tags-menu {
+    min-width: 700px;
+  
+    .tags-switcher {
+      min-width: 0;
+      width: 100%;
+    }
   }
 }
-
-@media screen and (max-width: 800px) {
-  .tags-menu .tags-switcher {
-    min-height: 8em;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-}
+// 
+// @media screen and (max-width: 800px) {
+//   .tags-menu .tags-switcher {
+//     min-height: 8em;
+//     width: 100%;
+//   }
+// }
+// 
+// @media screen and (max-width: 600px) {
+// }

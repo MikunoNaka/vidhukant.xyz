@@ -31,6 +31,14 @@
   padding: 0.5em 1.3em;
   border-radius: 2em;
   border: 1px solid $buttonBorderColor;
+  transition: background-color 400ms, top ease 400ms;
+  position: relative;
+  top: 0;
+}
+
+@mixin button-hover {
+  transition: background-color 250ms, top ease 250ms;
+  top: -3px;
 }
 
 .tags-menu {
@@ -43,7 +51,10 @@
   width: 100%;
   margin: auto;
 
-  .tags-menu-label {
+  .tags-switcher::before {
+    content: "Filter By Tags: ";
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
     color: $tagsMenuLabelFG;
   }
 
@@ -75,17 +86,18 @@
         }
         input:checked + .tag {
           background-color: $tagButtonActiveBG;
+          @include button-hover;
         }
       }
     }
     .menu {
       input[type=submit] {
         @include button;
-        transition: background-color 400ms;
+        background-color: rgba($tagButtonActiveBG, 0.9);
       }
       input:hover {
+        @include button-hover;
         background-color: $tagButtonActiveBG;
-        transition: background-color 250ms;
       }
       display: flex;
       justify-content: center;
@@ -104,13 +116,16 @@
     }
   }
 }
-// 
-// @media screen and (max-width: 800px) {
-//   .tags-menu .tags-switcher {
-//     min-height: 8em;
-//     width: 100%;
-//   }
-// }
-// 
-// @media screen and (max-width: 600px) {
-// }
+
+@media screen and (max-width: 800px) {
+  .tags-menu {
+    min-width: 0;
+    .tags-switcher {
+      // for some reason it won't work unless I do .1 .2 .3 thing
+      .options .tag-label .tag, 
+      .menu input[type=submit] {
+        font-size: 1em;
+      }
+    }
+  }
+}

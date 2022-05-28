@@ -1,4 +1,2 @@
-www/fonts
-www/pictures
-src/.env
-blog/css
+public/fonts
+public/pictures

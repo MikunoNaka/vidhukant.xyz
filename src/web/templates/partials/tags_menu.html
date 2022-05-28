@@ -22,8 +22,8 @@
     <div class="options">
       {{ range .Tags }}
         <label class="tag-label">
-          <input type="checkbox" name="tags" value="{{ .TagID }}" id="{{ .TagID }}" {{ if .IsSelected }}checked{{ end }}>
-          <span class="tag">{{ .TagName }}</span>
+          <input type="checkbox" name="tags" value="{{ .TagID }}" id="{{ .TagID }}" class="{{ if .IsSelected }}active{{ end }}">
+          <span class="tag {{ if .IsSelected }}active{{ end }}">{{ .TagName }}</span>
         </label>
       {{ end }}
     </div>

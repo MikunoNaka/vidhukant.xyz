@@ -1,7 +1,6 @@
-/public/fonts/
-/public/css/
-/favicon.ico
+/src/public/fonts/
+/src/public/css/
 
-/public/pictures/*
-!/public/pictures/**/
-!/public/pictures/projects/*
+/src/public/pictures/*
+!/src/public/pictures/**/
+!/src/public/pictures/projects/*

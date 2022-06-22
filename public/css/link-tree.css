@@ -1,0 +1,17 @@
+table {
+  font-size: 1.2rem;
+
+  width: 20rem;
+
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+tr {
+  height: 2.2rem;
+}
+
+td, th {
+  text-align: left;
+  border: 1px solid white;
+}

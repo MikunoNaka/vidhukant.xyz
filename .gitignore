@@ -1,2 +1,4 @@
-public/fonts
-public/pictures
+public/fonts/
+public/pictures/
+!public/pictures/projects/
+/favicon.ico

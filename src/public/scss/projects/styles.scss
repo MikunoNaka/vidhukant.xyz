@@ -5,7 +5,8 @@ $bgColorAlt: #373b41;
 $fgColorAlt: #ffffff;
 
 $headingColor: #bf87d0;
-// $headingColor: #8abeb7;
+// $linkColor: #8abeb7;
+$linkColor: #a64ce2;
 
 * {
   font-family: 'Source Code Pro', monospace;
@@ -45,6 +46,11 @@ img {
 
 h1, h2 {
   color: $headingColor;
+}
+
+a {
+  text-decoration: none;
+  color: $linkColor;
 }
 
 .colored-list li {

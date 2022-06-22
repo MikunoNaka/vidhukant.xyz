@@ -5,7 +5,6 @@ mkdir -p css/projects
 cmd="sass $@"
 
 $cmd scss/styles.scss:css/styles.css
-$cmd scss/link-tree.scss:css/link-tree.css
 $cmd scss/font-faces.scss:css/font-faces.css
 $cmd scss/index.scss:css/index.css
 

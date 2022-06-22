@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="macli - Unofficial MyAnimeList client for the lommand-line" />
+  <meta name="description" content="macli - unofficial MyAnimeList client for the command-line" />
   <link type="text/css" rel="stylesheet" href="/public/css/font-faces.css">
   <link type="text/css" rel="stylesheet" href="/public/css/projects/styles.css">
   <title>
-    macli | Unofficial MyAnimeList client | vidhukant.xyz
+    macli - Unofficial MyAnimeList Client | Vidhu Kant's Projects
   </title>
 </head>
 <body>
@@ -18,12 +18,42 @@
     updating some of the user's MyAnimeList data pretty smoothly.
   </p>
 
-  <div class="image-with-text-flex top-spacing">
-    <img src="/public/pictures/projects/macli_search_demo.webp" alt="macli search command screenshot" class="left">
-    <p class="right">
-      macli has an easy-to-use and interactive interface but most functions can also be used with flags to do things quicker, without the need of further user input.
-    </p>
-  </div>
+  <img src="/public/pictures/projects/macli_search_demo.webp" alt="macli search command screenshot" class="left">
+
+  <h2 id="installation">How To Install And Set Up</h2>
+  <ol>
+    <li>
+      <p>
+        If you have Go installed on your system, simply run <code>go install github.com/MikunoNaka/macli@latest</code>
+        to pull all the dependencies and build the app. This has been tested on Windows and Linux.<br/>
+        An AUR package is also available as <code>macli-git</code>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Before running macli, you need to generate a MyAnimeList Client ID. Go to <a href="https://myanimelist.net/apiconfig">this page</a>
+        and generate a new Client ID. You can set the name, homepage, etc to whatever you want (there really is no need to fill up the whole form for personal use)
+        but you must set the "App Redirect Url" to "http://localhost:8000" (without the quotes) to be able to successfully login with macli.
+      </p>
+    </li>
+    <li>
+      <p>
+        Now, run <code>macli login</code> then paste in your newly generated Client ID when prompted.
+        It should open a browser window prompting you to allow access to macli. Click allow and you're done!
+      </p>
+    </li>
+    <li>
+      <p>
+        Note: if the browser window doesn't show the MyAnimeList website but a blank page asking for your credentials,
+        close that tab and verify that you have correctly pasted your Client ID. This usually happens when an incorrect Client ID is entered.
+        You might need to wait for some time after generating a new Client ID for it to work.
+      </p>
+      <p>
+        Note: if you run <code>macli logout</code> to logout from macli, you can keep the Client ID saved on your system (when asked)
+        so you can easily log back in without needing to enter your Client ID again.
+      </p>
+    </li>
+  </ol>
 
   <h2 id="credits">Powered by MAL2Go</h2>
   <p>
@@ -32,5 +62,10 @@
   </p>
 
   <h1 id="howto" class="centered-text">How to Use</h1>
-  <p>to be added</p>
+  <ul class="colored-list">
+    <li>
+      <h2>Searching</h2>
+      <code>macli search </code>
+    </li>
+  </ul>
 </body>

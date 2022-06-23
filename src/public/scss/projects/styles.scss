@@ -8,8 +8,14 @@ $headingColor: #bf87d0;
 // $linkColor: #8abeb7;
 $linkColor: #a64ce2;
 
+@mixin codeblock {
+  overflow: scroll;
+  display: block;
+}
+
 * {
-  font-family: 'Source Code Pro', monospace;
+  // font-family: 'Source Code Pro', monospace;
+  font-family: 'Roboto', sans-serif;
 }
 
 ::selection {
@@ -22,18 +28,19 @@ $linkColor: #a64ce2;
 }
 
 body {
-  max-width: 1800px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   background-color: $bgColor;
   color: $fgColor;
-  padding: 0.2rem 1rem;
+  padding: 0rem 0.6rem;
   font-size: 1.1rem;
   line-height: 1.5;
 }
 
 code {
   background-color: $bgColorAlt;
+  white-space: nowrap;
   padding: 2px 5px;
 }
 
@@ -64,3 +71,8 @@ a {
   text-align: center;
 }
 
+@media only screen and (max-width: 600px) {
+  code.softblock {
+    max-width: 90%;
+  }
+}

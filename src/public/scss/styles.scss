@@ -1,5 +1,6 @@
 * {
-  font-family: 'Source Code Pro', monospace;
+  // font-family: 'Source Code Pro', monospace;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* they need to be seperate else they wont work on chromium */
@@ -32,7 +33,7 @@ a {
   margin: 0 0.5rem;
 }
 
-#navbar ul {
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;

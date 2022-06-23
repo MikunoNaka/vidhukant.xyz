@@ -3,10 +3,6 @@
   height: auto;
 }
 
-p {
-  line-height: 2;
-}
-
 a {
   color: #00ff8c;
 }
@@ -22,6 +18,9 @@ a {
 
 #section-1 {
   background-color: #56355D;
+  p {
+    line-height: 2;
+  }
 }
 
 #image-and-links {
@@ -39,11 +38,14 @@ a {
     list-style: none;
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
     width: $width;
     a {
       color: white;
       font-size: 1.2rem;
+      margin: 5px; // only for justify-content: center;
     }
   }
 }

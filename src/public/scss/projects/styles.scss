@@ -4,9 +4,11 @@ $fgColor: #c5c8c6;
 $bgColorAlt: #373b41;
 $fgColorAlt: #ffffff;
 
-$headingColor: #bf87d0;
-// $linkColor: #8abeb7;
+$headingColor0: #bf87d0;
+$headingColor1: #e67a30;
+
 $linkColor: #a64ce2;
+$linkColorAlt: pink;
 
 @mixin codeblock {
   overflow: scroll;
@@ -14,20 +16,20 @@ $linkColor: #a64ce2;
 }
 
 * {
-  // font-family: 'Source Code Pro', monospace;
   font-family: 'Roboto', sans-serif;
 }
 
 ::selection {
   color: $bgColor;
-  background: $headingColor;
+  background: $headingColor0;
 }
 ::-moz-selection {
   color: $bgColor;
-  background: $headingColor;
+  background: $headingColor0;
 }
 
 body {
+  min-height: calc(100vh - 3rem);
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -36,6 +38,13 @@ body {
   padding: 0rem 0.6rem;
   font-size: 1.1rem;
   line-height: 1.5;
+  position: relative;
+}
+
+body::after {
+  position: absolute;
+  bottom: -6rem;
+  padding-bottom: 2rem;
 }
 
 code {
@@ -52,7 +61,11 @@ img {
 }
 
 h1, h2 {
-  color: $headingColor;
+  color: $headingColor0;
+}
+
+h3, h4 {
+  color: $headingColor1;
 }
 
 a {
@@ -61,7 +74,7 @@ a {
 }
 
 .colored-list li {
-  color: $headingColor;
+  color: $headingColor0;
   p {
     color: $fgColor;
   }
@@ -69,6 +82,32 @@ a {
 
 .centered-text {
   text-align: center;
+}
+
+nav {
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    a {
+      color: $linkColorAlt;
+      margin: 0 0.5rem;
+    }
+    a.selected {
+      background-color: $headingColor0;
+      color: $bgColor;
+      padding: 2px 4px;
+    }
+  }
+}
+
+footer {
+  #copyright {
+    text-align: center;
+    line-height: 1.2;
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (max-width: 600px) {

@@ -3,7 +3,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-/* they need to be seperate else they wont work on chromium */
 ::selection {
   color: #ffffff;
   background: #8215d2;
@@ -20,49 +19,3 @@ body {
   color: #ffffff;
 }
 
-a {
-  text-decoration: none;
-  color: #e82e7c;
-}
-
-.links {
-  display: flex;
-  flex-direction: row;
-}
-.links a {
-  margin: 0 0.5rem;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-#navbar {
-  background-color: #1e2120;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 3rem;
-  height: 6vh;
-  width: 100%;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-}
-
-#navbar a {
-  font-size: 1.7rem;
-}
-
-@media screen and (max-width: 1080px) {
-  #navbar a {
-    font-size: 1.1rem;
-  }
-}
-
-/*
-@media screen and (max-width: 480px) {
-}
-*/

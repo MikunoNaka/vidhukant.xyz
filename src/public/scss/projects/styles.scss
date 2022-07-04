@@ -112,6 +112,8 @@ footer {
 
 @media only screen and (max-width: 600px) {
   code.softblock {
-    max-width: 90%;
+    display: block;
+    width: 90%;
+    overflow: scroll;
   }
 }

@@ -74,11 +74,178 @@
     Apart from that macli uses cobra and promptui libraries for the user interface. Big thanks to both of these projects.
   </p>
 
-  <h1 id="howto" class="centered-text">How to Use</h1>
+  <h1 id="how-to" class="centered-text">How to Use</h1>
   <ul class="colored-list">
     <li>
+      <h2>Common flags/conventions</h2>
+      <p>These are some optional but useful flags used by most of macli commmands. There is a list of flags supported by a command at the end of each command's section on this page.</p>
+      <ul>
+        <li id="flag_prompt-length">
+          <p><code>--prompt-length</code>/<code>-l</code> flag can be used to change the length of selection prompt. (default: 5)</p>
+        </li>
+        <li id="flag_search-length">
+          <p><code>--search-length</code>/<code>-n</code> flag can be used to change the amount of search results to show. (default: 10)</p>
+        </li>
+        <li id="flag_search-offset">
+          <p><code>--search-offset</code>/<code>-o</code> flag can be used to offset the search results. If offset is set to 5, the first 5 search results will be ignored. (default: 0)</p>
+        </li>
+        <li id="flag_search-nsfw">
+          <p><code>--search-nsfw</code> flag will include NSFW items in search results.</p>
+        </li>
+        <li id="flag_query">
+          <p><code>--query</code>/<code>-q</code> flag can be used to only read the current value. (i.e see the number of episodes watched, etc)</p>
+        </li>
+        <li id="flag_manga">
+          <p><code>--manga</code>/<code>-m</code> flag can be used to do specifed action on a manga instead of an anime.</p>
+        </li>
+        <li id="flag_set-value">
+          <p><code>--set-value</code>/<code>-s</code> flag can be used to specify a value to be set.</p>
+        </li>
+        <li>
+          <p>Run <code>macli --help</code> or <code>macli [command] --help</code> for more info.</p>
+        </li>
+        <li>
+          <p>
+            Most <code>macli</code> commands need a search string. You can specify one with the arguments as <code>macli [command] "search string"</code>.
+            This is optional, if none is specified it will prompt you.
+          </p>
+        </li>
+      </ul>
+
       <h2>Searching</h2>
-      <code>macli search </code>
+      <ul>
+        <li>
+          <p><code>macli search</code> will ask you for a search string and search MyAnimeList for animes based on that.</p>
+        </li>
+        <li>
+          <p>Alternatively, <code>macli search mushishi</code> can be used to specify the search string directly from arguments. (replace "mushishi" with your liking)</p>
+        </li>
+        <li>
+          <p>
+            Supported Flags:
+            <code><a href="#flag_manga">--manga</a></code>
+            <code><a href="#flag_prompt-length">--prompt-length</a></code>
+            <code><a href="#flag_query">--query</a></code>
+            <code><a href="#flag_search-length">--search-length</a></code>
+            <code><a href="#flag_search-nsfw">--search-nsfw</a></code>
+            <code><a href="#flag_search-offset">--search-offset</a></code>
+          </p>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <h2>Status</h2>
+      <ul>
+        <li>
+          <p>
+            <code>macli status</code> can be used to update the status of an anime or manga (with the <code>-m</code> flag).
+            Use the <code>-s</code> flag (optionally) to specify the status. Example: <code>macli status "kanojo mo kanojo" -s dropped</code>
+          </p>
+        </li>
+        <li>
+          <p>Possible statuses are <code>watching</code>, <code>completed</code>, <code>on_hold</code>, <code>dropped</code>, <code>plan_to_watch</code></p>
+        </li>
+        <li>
+          <p>
+            Supported Flags:
+            <code><a href="#flag_manga">--manga</a></code>
+            <code><a href="#flag_prompt-length">--prompt-length</a></code>
+            <code><a href="#flag_query">--query</a></code>
+            <code><a href="#flag_search-length">--search-length</a></code>
+            <code><a href="#flag_search-nsfw">--search-nsfw</a></code>
+            <code><a href="#flag_search-offset">--search-offset</a></code>
+            <code><a href="#flag_set-value">--set-value</a></code>
+          </p>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <h2>Episodes/Chapters</h2>
+      <ul>
+        <li>
+          <p>
+            <code>macli episodes</code> can be used to update the number of episodes watched for an anime. Same can be done for manga with <code>macli chapters</code>.
+            Use the <code>-s</code> flag (optionally) to specify the episode/chapter number. Example: <code>macli episodes "mushishi" -s 10</code>
+          </p>
+        </li>
+        <li>
+          <p>The episode/chapter number can be set as <code>+1</code>, <code>-2</code>, etc to increment/decrement by the specified number.</p>
+        </li>
+        <li>
+          <p>
+            Supported Flags:
+            <code><a href="#flag_prompt-length">--prompt-length</a></code>
+            <code><a href="#flag_query">--query</a></code>
+            <code><a href="#flag_search-length">--search-length</a></code>
+            <code><a href="#flag_search-nsfw">--search-nsfw</a></code>
+            <code><a href="#flag_search-offset">--search-offset</a></code>
+            <code><a href="#flag_set-value">--set-value</a></code>
+          </p>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <h2>Score</h2>
+      <ul>
+        <li>
+          <p>
+            <code>macli score</code> can be used to update the score of an anime or manga (with the <code>-m</code> flag).
+            Use the <code>-s</code> flag (optionally) to specify the score. Example: <code>macli score "kanokari" -s 10</code>
+          </p>
+        </li>
+        <li>
+          <p>The score can be any number between 0 and 10 or can be set as <code>+1</code> or <code>-2</code>, etc to increment/decrement by the specified number.</p>
+        </li>
+        <li>
+          <p>
+            Supported Flags:
+            <code><a href="#flag_manga">--manga</a></code>
+            <code><a href="#flag_prompt-length">--prompt-length</a></code>
+            <code><a href="#flag_query">--query</a></code>
+            <code><a href="#flag_search-length">--search-length</a></code>
+            <code><a href="#flag_search-nsfw">--search-nsfw</a></code>
+            <code><a href="#flag_search-offset">--search-offset</a></code>
+            <code><a href="#flag_set-value">--set-value</a></code>
+          </p>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <h2>Score</h2>
+      <ul>
+        <li>
+          <p><code>macli user-info</code> will print out the currently logged in user's info. Looking up another user's info is not allowed by MyAnimeList as of now.</p>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <h2>Other details</h2>
+      <ul>
+        <li>
+          <p><code>macli about</code> will print out some other information about macli (license info, etc)</p>
+        </li>
+        <li>
+          More to be added
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h1 id="useful-links">Useful links</h1>
+  <ul class="colored-list">
+    <li>
+      <a href="https://github.com/MikunoNaka/macli">macli GitHub</a>
+    </li>
+    <li>
+      <a href="https://github.com/MikunoNaka/MAL2Go">MAL2Go GitHub</a>
+    </li>
+    <li>
+      <a href="https://vidhukant.xyz/projects/MAL2Go">MAL2Go Homepage</a>
     </li>
   </ul>
 

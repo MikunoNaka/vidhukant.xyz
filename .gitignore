@@ -1,5 +1,6 @@
 /src/public/fonts/
 /src/public/css/
+/src/projects/themes
 
 /src/public/pictures/*
 !/src/public/pictures/**/

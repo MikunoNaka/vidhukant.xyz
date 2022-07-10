@@ -27,9 +27,16 @@ html, body {
   background-color: $bgColor;
   color: $fgColor;
   padding: 0rem 0.8rem;
-  max-width: 1200px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+}
+
+main .single {
+  margin: 3rem 0;
+  h1, h3, h5 {
+    text-align: center;
+  }
 }
 
 code {

@@ -1,6 +1,7 @@
 ---
 title: "MAL2Go"
-date: 2022-07-10T15:56:33+05:30
+date: 2022-07-10T15:40:33+05:30
+description: GoLang API Wrapper for MyAnimeList's Official V2 API
 draft: true
 ---
 

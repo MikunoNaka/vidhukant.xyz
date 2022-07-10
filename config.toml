@@ -1,3 +1,6 @@
 baseURL = 'https://vidhukant.xyz/'
 languageCode = 'en-us'
 title = "Vidhu Kant's Website"
+
+[taxonomies]
+  tag = 'tags'

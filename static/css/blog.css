@@ -16,9 +16,16 @@ html, body {
   background-color: #1d1f21;
   color: #c5c8c6;
   padding: 0rem 0.8rem;
-  max-width: 1200px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+}
+
+main .single {
+  margin: 3rem 0;
+}
+main .single h1, main .single h3, main .single h5 {
+  text-align: center;
 }
 
 code {

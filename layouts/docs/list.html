@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <div class="list">
+    <h1>VidhuKant's Docs</h1>
+    <p>Here I aggregate and store the documentation of all the programs I've written</p>
+    <ul>
+      {{ range .Pages.ByTitle }}
+        <li>
+          <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+          <p>{{ .Description }}</p>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}
+

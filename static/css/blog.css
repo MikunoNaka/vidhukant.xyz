@@ -31,9 +31,18 @@ main .single h1, main .single h3, main .single h5 {
 code {
   background-color: #373b41;
   padding: 2px 5px;
+  border-radius: 4px;
+}
+code ::selection {
+  color: white;
+}
+code ::-moz-selection {
+  color: white;
+}
+
+pre code {
   overflow: scroll;
   display: block;
-  border-radius: 4px;
 }
 
 img {

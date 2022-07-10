@@ -6,14 +6,22 @@ draft: false
 tags: ["programs"]
 ---
 
-# macli - BASED The CLI-Based MyAnimeList Client
-
 ## h2
 
 # h1
 
-yo doodz
+`inline code`
+
+```
+code block
+alskdjflsadf
 
 
-### heheh
+asdklfjlsadjflkasdflsdkfklsajflkjalskfjklasdjfkljslfjasdlfjasldkfjklsadjfklasjdlfjsaldfjlkasjflkjasklfjalskjflkasdjldlf asdklfjlsadjflkasdflsdkfklsajflkjalskfjklasdjfkljslfjasdlfjasldkfjklsadjfklasjdlfjsaldfjlkasjflkjasklfjalskjflkasdjldlf
 
+
+askldfjlaksdfkljasdfl
+
+
+askdllkasdflk
+```

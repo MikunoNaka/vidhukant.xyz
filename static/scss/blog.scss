@@ -14,14 +14,13 @@ $linkColorAlt: pink;
   font-family: 'Roboto', sans-serif;
 }
 
-::selection {
-  color: $bgColor;
-  background: $headingColor0;
+@mixin selectionColor($fgColor, $bgColor) {
+  color: $fgColor;
+  background: $bgColor;
 }
-::-moz-selection {
-  color: $bgColor;
-  background: $headingColor0;
-}
+
+::selection { @include selectionColor($bgColor, $headingColor0) }
+::-moz-selection { @include selectionColor($bgColor, $headingColor0) }
 
 html, body {
   background-color: $bgColor;
@@ -42,9 +41,12 @@ main .single {
 code {
   background-color: $bgColorAlt;
   padding: 2px 5px;
+  border-radius: 4px;
+}
+
+pre code {
   overflow: scroll;
   display: block;
-  border-radius: 4px;
 }
 
 img {

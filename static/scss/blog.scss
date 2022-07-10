@@ -23,6 +23,7 @@ $linkColorAlt: pink;
 ::-moz-selection { @include selectionColor($bgColor, $headingColor0) }
 
 html, body {
+  line-height: 1.5;
   background-color: $bgColor;
   color: $fgColor;
   padding: 0rem 0.8rem;
@@ -42,6 +43,7 @@ code {
   background-color: $bgColorAlt;
   padding: 2px 5px;
   border-radius: 4px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 pre code {
@@ -69,12 +71,21 @@ a {
   color: $linkColor;
 }
 
-ul, ol {
-  li {
+main {
+  ul, ol {
+    line-height: 1.8;
+  }
+}
+
+main ul {
+  list-style: none;
+  li::before {
+    content: "\2022";
     color: $headingColor0;
-    p {
-      color: $fgColor;
-    }
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
   }
 }
 
@@ -99,7 +110,7 @@ nav {
 footer {
   #copyright {
     text-align: center;
-    line-height: 1.2;
+    line-height: 1.1;
     font-size: 1rem;
   }
 }

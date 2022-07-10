@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   font-family: "Roboto", sans-serif;
 }
@@ -13,6 +14,7 @@
 }
 
 html, body {
+  line-height: 1.5;
   background-color: #1d1f21;
   color: #c5c8c6;
   padding: 0rem 0.8rem;
@@ -32,12 +34,7 @@ code {
   background-color: #373b41;
   padding: 2px 5px;
   border-radius: 4px;
-}
-code ::selection {
-  color: white;
-}
-code ::-moz-selection {
-  color: white;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 pre code {
@@ -65,11 +62,20 @@ a {
   color: #a64ce2;
 }
 
-ul li, ol li {
-  color: #bf87d0;
+main ul, main ol {
+  line-height: 1.8;
 }
-ul li p, ol li p {
-  color: #c5c8c6;
+
+main ul {
+  list-style: none;
+}
+main ul li::before {
+  content: "•";
+  color: #bf87d0;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
 
 nav ul {
@@ -90,6 +96,6 @@ nav ul a.selected {
 
 footer #copyright {
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.1;
   font-size: 1rem;
 }

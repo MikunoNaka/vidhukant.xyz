@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="section" id="section-1">
+  <div class="section-child">
+
+    <div id="image-and-links">
+      <img id="my-image" src="/images/vidhukant.jpg" alt="Vidhu Kant's Image">
+      <ul id="my-links">
+        <a href="/projects">
+          <li>Projects</li>
+        </a>
+        <!--a href="/blog">
+          <li>Blog</li>
+        </a-->
+        <!--a href="/links">
+          <li>Other Links</li>
+        </a-->
+        <a href="https://youtube.mikunonaka.net">
+          <li>YouTube</li>
+        </a>
+        <a href="https://github.com/MikunoNaka">
+          <li>GitHub</li>
+        </a>
+        <a href="mailto:vidhukant@vidhukant.xyz">
+          <li>Email Me</li>
+        </a>
+      </ul>
+    </div>
+
+    <div id="my-intro">
+      {{ .Content }}
+    </div>
+
+  </div>
+</div>
+{{ end }}
